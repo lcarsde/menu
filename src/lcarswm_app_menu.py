@@ -122,7 +122,7 @@ class LcarswmAppMenu(Gtk.Window):
 
     def on_create(self, window):
         # mark myself as the app menu
-        self.get_property("window").set_utf8_property("LCARSWM_APP_MENU", "LCARSWM_APP_MENU")
+        self.get_property("window").set_utf8_property("LCARSDE_APP_MENU", "LCARSDE_APP_MENU")
         self.thread.start()
 
     def on_destroy(self, window):
