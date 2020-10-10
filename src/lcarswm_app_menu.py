@@ -4,7 +4,7 @@ from threading import Thread
 from posix_ipc import MessageQueue, BusyError
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import GdkX11, Gdk, Gtk, GLib
+from gi.repository import GdkX11, Gtk, GLib
 
 
 css = b'''
@@ -48,7 +48,7 @@ css = b'''
 
 class WindowEntry(Gtk.Box):
     """
-        Window entry for selecting or closing the associated window
+    Window entry for selecting or closing the associated window
     """
     def __init__(self, window_id, class_name, css_provider, send_queue):
         Gtk.Box.__init__(self, spacing=8)
@@ -57,7 +57,11 @@ class WindowEntry(Gtk.Box):
         self.class_name = class_name
         self.sendQueue = send_queue
 
-        self.select_button = Gtk.Button(label=class_name)
+        shortened_class_name = class_name[:15]
+        if shortened_class_name != class_name:
+            shortened_class_name += "…"
+
+        self.select_button = Gtk.Button(label=shortened_class_name)
         self.select_button.set_size_request(184, 40)
         self.select_button.set_alignment(1, 1)
         self.select_button.get_style_context().add_class("select_button")
@@ -85,10 +89,10 @@ class WindowEntry(Gtk.Box):
 
 class LcarswmAppMenu(Gtk.Window):
     """
-        Application menu main window
+    Application menu main window
     """
     def __init__(self):
-        Gtk.Window.__init__(self, title="lcarswm app menu")
+        Gtk.Window.__init__(self, title="lcarsde app menu")
 
         self.css_provider = Gtk.CssProvider()
         self.css_provider.load_from_data(css)
