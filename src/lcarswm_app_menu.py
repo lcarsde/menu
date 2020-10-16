@@ -54,12 +54,12 @@ class WindowEntry(Gtk.Box):
         Gtk.Box.__init__(self, spacing=8)
 
         self.window_id = window_id
-        self.class_name = class_name
         self.sendQueue = send_queue
 
         shortened_class_name = class_name[:15]
         if shortened_class_name != class_name:
             shortened_class_name += "…"
+        self.class_name = shortened_class_name
 
         self.select_button = Gtk.Button(label=shortened_class_name)
         self.select_button.set_size_request(184, 40)
