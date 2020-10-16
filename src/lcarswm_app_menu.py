@@ -83,8 +83,11 @@ class WindowEntry(Gtk.Box):
         self.sendQueue.send("close\n{0}".format(self.window_id).encode())
 
     def update_label(self, class_name):
-        self.class_name = class_name
-        self.select_button.set_label(class_name)
+        shortened_class_name = class_name[:15]
+        if shortened_class_name != class_name:
+            shortened_class_name += "…"
+        self.class_name = shortened_class_name
+        self.select_button.set_label(shortened_class_name)
 
 
 class LcarswmAppMenu(Gtk.Window):
