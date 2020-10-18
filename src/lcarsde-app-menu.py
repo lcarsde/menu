@@ -90,7 +90,7 @@ class WindowEntry(Gtk.Box):
         self.select_button.set_label(shortened_class_name)
 
 
-class LcarswmAppMenu(Gtk.Window):
+class LcarsdeAppMenu(Gtk.Window):
     """
     Application menu main window
     """
@@ -192,7 +192,7 @@ class LcarswmAppMenu(Gtk.Window):
 
 
 if __name__ == "__main__":
-    win = LcarswmAppMenu()
+    win = LcarsdeAppMenu()
     win.connect("destroy", Gtk.main_quit)
     win.show_all()
     Gtk.main()
