@@ -167,7 +167,6 @@ class LcarsdeAppMenu(Gtk.Window):
     @staticmethod
     def on_list_update(self, list_string):
         data_list = list_string.splitlines()
-        print(list_string)
         if data_list[0] != "list":
             return
 
