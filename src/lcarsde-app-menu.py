@@ -167,12 +167,13 @@ class LcarsdeAppMenu(Gtk.Window):
     @staticmethod
     def on_list_update(self, list_string):
         data_list = list_string.splitlines()
+        print(list_string)
         if data_list[0] != "list":
             return
 
         updated_window_elements = dict((window_id, (class_name, is_active == "active"))
                                        for window_id, class_name, is_active in
-                                       (window_element.split("\t") + [None]
+                                       (window_element.split("\t")
                                         for window_element in data_list[1:]))
 
         known_windows = list(self.entries.keys())
