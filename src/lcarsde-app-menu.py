@@ -23,6 +23,10 @@ css = b'''
     padding: 2px 3px;
     margin: 0;
 }
+.selected {
+    background-color: #F96;
+    background: #F96; /* for Ubuntu */
+}
 .close_button {
     background-color: #C66;
     background: #C66; /* for Ubuntu */
@@ -50,7 +54,7 @@ class WindowEntry(Gtk.Box):
     """
     Window entry for selecting or closing the associated window
     """
-    def __init__(self, window_id, class_name, css_provider, send_queue):
+    def __init__(self, window_id, class_name, is_active, css_provider, send_queue):
         Gtk.Box.__init__(self, spacing=8)
 
         self.window_id = window_id
@@ -65,6 +69,8 @@ class WindowEntry(Gtk.Box):
         self.select_button.set_size_request(184, 40)
         self.select_button.set_alignment(1, 1)
         self.select_button.get_style_context().add_class("select_button")
+        if is_active:
+            self.select_button.get_style_context().add_class("selected")
         self.select_button.get_style_context().add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
         self.select_button.connect("clicked", self.on_select_clicked)
         self.pack_start(self.select_button, False, False, 0)
@@ -88,6 +94,12 @@ class WindowEntry(Gtk.Box):
             shortened_class_name += "…"
         self.class_name = shortened_class_name
         self.select_button.set_label(shortened_class_name)
+
+    def update_activity(self, is_active):
+        if is_active:
+            self.select_button.get_style_context().add_class("selected")
+        else:
+            self.select_button.get_style_context().remove_class("selected")
 
 
 class LcarsdeAppMenu(Gtk.Window):
@@ -158,8 +170,10 @@ class LcarsdeAppMenu(Gtk.Window):
         if data_list[0] != "list":
             return
 
-        updated_window_elements = dict((window_id, class_name) for window_id, class_name in
-                                       (window_element.split("\t") for window_element in data_list[1:]))
+        updated_window_elements = dict((window_id, (class_name, is_active == "active"))
+                                       for window_id, class_name, is_active in
+                                       (window_element.split("\t") + [None]
+                                        for window_element in data_list[1:]))
 
         known_windows = list(self.entries.keys())
         self.cleanup_windows(known_windows, updated_window_elements)
@@ -175,18 +189,19 @@ class LcarsdeAppMenu(Gtk.Window):
                 del self.entries[known_window_id]
 
     def handle_current_windows(self, known_windows, updated_window_elements):
-        for (window_id, class_name) in updated_window_elements.items():
+        for (window_id, (class_name, is_active)) in updated_window_elements.items():
             if window_id in known_windows:
-                self.update_window(window_id, class_name)
+                self.update_window(window_id, class_name, is_active)
             else:
-                self.add_window(window_id, class_name)
+                self.add_window(window_id, class_name, is_active)
 
-    def update_window(self, window_id, class_name):
+    def update_window(self, window_id, class_name, is_active):
         entry = self.entries[window_id]
         entry.update_label(class_name)
+        entry.update_activity(is_active)
 
-    def add_window(self, window_id, class_name):
-        entry = WindowEntry(window_id, class_name, self.css_provider, self.sendQueue)
+    def add_window(self, window_id, class_name, is_active):
+        entry = WindowEntry(window_id, class_name, is_active, self.css_provider, self.sendQueue)
         self.app_container.pack_start(entry, False, False, 0)
         self.entries[window_id] = entry
 
