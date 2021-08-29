@@ -10,15 +10,10 @@ echo "preparing debian package build for $1-${CIRCLE_TAG}"
 mkdir -p "build/deb/$1-${CIRCLE_TAG}"
 
 # copy software resources
-cp -r gradle "build/deb/$1-${CIRCLE_TAG}/gradle"
 cp -r src "build/deb/$1-${CIRCLE_TAG}/src"
-cp build.gradle.kts "build/deb/$1-${CIRCLE_TAG}/"
 cp CHANGELOG "build/deb/$1-${CIRCLE_TAG}/"
-cp gradle.properties "build/deb/$1-${CIRCLE_TAG}/"
-cp gradlew "build/deb/$1-${CIRCLE_TAG}/"
 cp LICENSE "build/deb/$1-${CIRCLE_TAG}/"
 cp readme.md "build/deb/$1-${CIRCLE_TAG}/"
-cp settings.gradle.kts "build/deb/$1-${CIRCLE_TAG}/"
 
 cd "build/deb"
 
