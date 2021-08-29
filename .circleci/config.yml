@@ -70,7 +70,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} 20.1 ~/repo/build/deb/deploy/
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${CIRCLE_TAG} ~/repo/build/deb/deploy/
 
 workflows:
   version: 2
@@ -87,18 +87,18 @@ workflows:
       - deploy_ubuntu:
           context:
             - lcarsde-context
-#          filters:
-#            tags:
-#              only: /.*/
-#            branches:
-#              ignore: /.*/
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
       - publish_github_release:
           context:
             - lcarsde-context
           requires:
             - deploy_ubuntu
-#          filters:
-#            tags:
-#              only: /.*/
-#            branches:
-#              ignore: /.*/
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
