@@ -1,0 +1,14 @@
+Source: lcarsde-app-menu
+Maintainer: Andreas Tennert <lcarsde@andreas-tennert.de>
+Section: misc
+Priority: optional
+Standards-Version: 4.5.0
+Build-Depends: debhelper (>= 9)
+
+Package: lcarsde-app-menu
+Architecture: any
+Depends: python3, python3-posix-ipc, python3-gi
+Recommends: fonts-ubuntu
+Provides: app-menu
+Description: Menu of open applications for LCARSDE
+ https://lcarsde.github.io
