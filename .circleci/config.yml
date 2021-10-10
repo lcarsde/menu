@@ -87,7 +87,7 @@ jobs:
       - run: git clone git@github.com:lcarsde/lcarsde.github.io.git
 
       # update content
-      - run: sed -i -e "s/[0-9\.]*\/lcarsde-app-menu_[0-9\.]*_amd64.deb">application menu ([0-9\.]*)/$CIRCLE_TAG\/lcarsde-app-menu_$CIRCLE_TAG_amd64.deb">application menu ($CIRCLE_TAG)/" installation.html
+      - run: sed -i -e 's/[0-9\.]*\/lcarsde-app-menu_[0-9\.]*_amd64.deb">application menu ([0-9\.]*)/$CIRCLE_TAG\/lcarsde-app-menu_$CIRCLE_TAG_amd64.deb">application menu ($CIRCLE_TAG)/' installation.html
 
       # upload new contents
       - run: git add -u && git commit -m "update application menu deb file link to version $CIRCLE_TAG" && git push
