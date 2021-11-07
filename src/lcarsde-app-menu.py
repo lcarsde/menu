@@ -4,7 +4,7 @@ from threading import Thread
 from posix_ipc import MessageQueue, BusyError
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import GdkX11, Gtk, GLib
+from gi.repository import Gtk, GdkX11, GLib
 
 
 css = b'''

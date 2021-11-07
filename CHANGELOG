@@ -1,2 +1,5 @@
+21.1
+* bug fix to hold up against different running GTK versions
+
 20.1
 * initial version
