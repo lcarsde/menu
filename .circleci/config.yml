@@ -18,6 +18,8 @@ jobs:
 
       # get deployment files for lcarsde-app-menu
       - run: git clone ssh://aur@aur.archlinux.org/lcarsde-app-menu.git
+      - run: cd lcarsde-app-menu && git config user.email "$AUR_GIT_EMAIL"
+      - run: cd lcarsde-app-menu && git config user.name "AUR_GIT_NAME"
 
       # log the current contents
       - run: cat lcarsde-app-menu/PKGBUILD
