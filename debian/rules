@@ -21,6 +21,7 @@ install:
 
 	mkdir -p "debian/lcarsde-app-menu/usr/bin"
 	cp -r "src/lcarsde-app-menu.py" "debian/lcarsde-app-menu/usr/bin/"
+	cp -r "resources/etc" "debian/lcarsde-app-menu/etc"
 
 	mkdir -p "debian/lcarsde-app-menu/usr/share/doc/lcarsde-app-menu"
 	cp "LICENSE" "debian/lcarsde-app-menu/usr/share/doc/lcarsde-app-menu/copyright"

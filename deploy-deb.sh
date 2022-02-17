@@ -11,6 +11,7 @@ mkdir -p "build/deb/$1-${CIRCLE_TAG}"
 
 # copy software resources
 cp -r src "build/deb/$1-${CIRCLE_TAG}/src"
+cp -r resources "build/deb/$1-${CIRCLE_TAG}/resources"
 cp CHANGELOG "build/deb/$1-${CIRCLE_TAG}/"
 cp LICENSE "build/deb/$1-${CIRCLE_TAG}/"
 cp readme.md "build/deb/$1-${CIRCLE_TAG}/"

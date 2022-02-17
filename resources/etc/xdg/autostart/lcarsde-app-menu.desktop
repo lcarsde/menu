@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=LCARSDE application menu
+Exec=/usr/bin/lcarsde-app-menu.py
+OnlyShowIn=lcarsde;

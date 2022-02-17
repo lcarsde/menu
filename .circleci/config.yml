@@ -19,7 +19,7 @@ jobs:
       # get deployment files for lcarsde-app-menu
       - run: git clone ssh://aur@aur.archlinux.org/lcarsde-app-menu.git
       - run: cd lcarsde-app-menu && git config user.email "$AUR_GIT_EMAIL"
-      - run: cd lcarsde-app-menu && git config user.name "AUR_GIT_NAME"
+      - run: cd lcarsde-app-menu && git config user.name "$AUR_GIT_NAME"
 
       # log the current contents
       - run: cat lcarsde-app-menu/PKGBUILD
@@ -27,6 +27,7 @@ jobs:
 
       # update content
       - run: cd lcarsde-app-menu && sed -i -e "s/^pkgver=[0-9\.]*$/pkgver=$CIRCLE_TAG/" PKGBUILD
+      - run: cd lcarsde-status-bar && sed -i -e "s/^pkgrel=[0-9]*$/pkgrel=1/" PKGBUILD
       - run: cd lcarsde-app-menu && updpkgsums
       - run: cd lcarsde-app-menu && makepkg --printsrcinfo > .SRCINFO
 
