@@ -79,14 +79,14 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-#      - deploy_aur:
-#          context:
-#            - lcarsde-context
-#          filters:
-#            tags:
-#              only: /.*/
-#            branches:
-#              ignore: /.*/
+      - deploy_aur:
+          context:
+            - lcarsde-context
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
       - deploy_ubuntu:
           context:
             - lcarsde-context
