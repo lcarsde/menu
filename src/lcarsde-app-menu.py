@@ -14,8 +14,8 @@ css = b'''
     font-size: 15px;
     color: #000;
     text-shadow: none;
-    background-color: #99F;
-    background: #99F; /* for Ubuntu */
+    background-color: #AA7FAA;
+    background: #AA7FAA; /* for Ubuntu */
     outline-style: none;
     border-radius: 0;
     border-width: 0;
@@ -23,13 +23,25 @@ css = b'''
     padding: 2px 3px;
     margin: 0;
 }
+.select_button:hover {
+    background-color: #BE9BB4;
+    background: #BE9BB4; /* for Ubuntu */
+}
+.select_button:active {
+    background-color: #906193;
+    background: #906193; /* for Ubuntu */
+}
 .selected {
-    background-color: #F96;
-    background: #F96; /* for Ubuntu */
+    background-color: #B5517F;
+    background: #B5517F; /* for Ubuntu */
+}
+.selected:hover {
+    background-color: #CA7896;
+    background: #CA7896; /* for Ubuntu */
 }
 .close_button {
-    background-color: #C66;
-    background: #C66; /* for Ubuntu */
+    background-color: #C1574C;
+    background: #C1574C; /* for Ubuntu */
     outline-style: none;
     border-radius: 0 20px 20px 0;
     border-width: 0;
@@ -37,8 +49,17 @@ css = b'''
     padding: 0;
     margin: 0;
 }
+.close_button:hover {
+    background-color: #D88274;
+    background: #D88274; /* for Ubuntu */
+}
+.close_button:active {
+    background-color: #A9372E;
+    background: #A9372E; /* for Ubuntu */
+}
 .spacer {
-    background-color: #99C;
+    background-color: #D88274;
+    background: #D88274; /* for Ubuntu */
     outline-style: none;
     border-radius: 0;
     padding: 0;
