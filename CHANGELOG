@@ -1,3 +1,8 @@
+23.1
+* update deb build to Ubuntu 22.04
+* change color theme
+* add hover and pressed states for buttons
+
 22.1
 * add autostart file
 
